@@ -1,5 +1,5 @@
 <?php 
-require('includes/Crud.php' );			
+require('classes/Crud.php' );			
 ?>
 
 <!DOCTYPE html>
@@ -26,10 +26,15 @@ require('includes/Crud.php' );
 					    	<input type="text" class="form-control" name="task">
 					  	</div>
 
-					  	<div class="form-group">
-					    	<label for="priority">Priority:</label>
-					    	<input type="text" class="form-control" name="priority">
-					  	</div>
+
+					    <div class="form-group">
+						 	<label for="priority">Chose Priority:</label>
+						  	<select class="form-control" name="priority">
+						    	<option>Low</option>
+						    	<option>Medium</option>
+						    	<option>High</option>
+						  	</select>
+						</div>
 
 					  	<div class="form-group">
 					    	<label for="due-date">Due Date:</label>
@@ -84,11 +89,9 @@ require('includes/Crud.php' );
 
 					  	echo '</ul>';
 
-					  	mysqli_free_result($queryResult);
+					  	mysqli_free_result( $queryResult );
 
 					}
-
-
 
 					$crud->closeConnection( $connection );
 				 ?>
@@ -98,6 +101,5 @@ require('includes/Crud.php' );
 
 		</div>
 	</div>
-	 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php 
 
-	require('includes/Crud.php' );
+	require('classes/Crud.php' );
 
 
 	if ( isset( $_GET['id'] ) && is_numeric( $_GET['id'] ) ) {
