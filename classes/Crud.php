@@ -40,6 +40,14 @@ class Crud
 		return $sql;
 	}
 
+	public function updateTaskStatus( $taskId, $taskStatus )
+	{
+		$sql = "UPDATE tasks SET status = '$taskStatus' WHERE id = $taskId ";	
+
+		return $sql;
+
+	}
+
 
 	public function allTask( $taskId = '' )
 	{

@@ -12,9 +12,9 @@ require('classes/Crud.php' );
 </head>
 <body>
 
-	<div class="container">
+	<div class="container m-top-50">
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-5">
 				
 				<h3>Add Task</h3>
 
@@ -48,9 +48,10 @@ require('classes/Crud.php' );
 
 			</div> <!-- .col-md-6 -->
 
-			<div class="col-md-6">
-				<h3>All Tasks</h3>
+			<div class="col-md-7 m-top-50">
 
+			  	<ul class="list-group">
+			  	<li class="list-group-item active"> All Tasks </li>
 				<?php 
 
 					$sql = $crud->allTask();
@@ -63,7 +64,6 @@ require('classes/Crud.php' );
 					
 					} else {
 					  	
-					  	echo '<ul class="list-group">';
 
 					  	while ( $taskRow = mysqli_fetch_row($queryResult) )
 
@@ -78,7 +78,24 @@ require('classes/Crud.php' );
 					   				<a href="edit-task.php?id=<?php echo $taskRow[0]; ?>">Edit</a>
 					   			</span>
 
-					   			Task Name: <?php echo $taskRow[1]; ?> <br/>
+					   			Task Name: 
+					   			<?php 
+					   			if ( $taskRow[5] == true ) {
+					   				echo '<span class="line-through">' . $taskRow[1] . '</span>';
+					   			} else{
+					   				echo '<span>' . $taskRow[1] . '</span>';
+					   			}
+					   			?> 
+
+					   			<?php 
+					   				if ( $taskRow[5] != true  ) {
+					   					echo '<a href="edit-status.php?id='.$taskRow[0].'&status=0"><span class="tag tag-danger">Mark as completed</span></a>';
+					   				}else{
+					   					echo '<a href="edit-status.php?id='.$taskRow[0].'&status=1"><span class="tag tag-danger">Mark as uncompleted</span></a>';
+					   				}
+
+					   			 ?>
+					   			<br/>
 
 					   			<span class="text-muted">Priority: <?php echo $taskRow[2]; ?></span> <br>
 					   			<span class="text-muted">Due Date: <?php echo $taskRow[3]; ?></span>
@@ -87,11 +104,12 @@ require('classes/Crud.php' );
 
 					    <?php }
 
-					  	echo '</ul>';
 
 					  	mysqli_free_result( $queryResult );
 
 					}
+					
+					echo '</ul>';
 
 					$crud->closeConnection( $connection );
 				 ?>

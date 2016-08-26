@@ -104,3 +104,30 @@ ul.mail-list li span.mail-message-preview{
 .m-top-100 {
     margin-top: 100px;
 }
+
+.m-top-50 {
+    margin-top: 50px;
+}
+
+/*Bootstrap tag*/
+.tag-danger {
+    background-color: #d9534f;
+}
+.tag {
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+}
+
+a:hover{
+    text-decoration: none;
+}
+.line-through{
+    text-decoration: line-through;
+}
